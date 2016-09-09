@@ -4,9 +4,9 @@ INTRODUCTION
 ------------
 The source code is related to our work 
 
-1. Shreyas Seshadri, Ulpu Remes and Okko Rasanen: "Dirichlet process mixture models for clustering i-vector data", ICASSP 2017, submitted.
+1. Shreyas Seshadri, Ulpu Remes and Okko Rasanen: "Dirichlet process mixture models for clustering i-vector data", submitted.
 
-2. Shreyas Seshadri, Ulpu Remes and Okko Rasanen: "Comparison of Non-parametric Bayesian Mixture Models for Zero-Resource Speech Processing", ICASSP 2017, submitted.
+2. Shreyas Seshadri, Ulpu Remes and Okko Rasanen: "Comparison of Non-parametric Bayesian Mixture Models for Zero-Resource Speech Processing", submitted.
 
 Comments/questions are welcome! Please contact: shreyas.seshadri@aalto.fi
 
