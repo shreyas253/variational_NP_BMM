@@ -1,10 +1,31 @@
-% (C) 2016 Ulpu Remes, Shreyas Seshadri and Okko Rasaen
-% MIT license
-% For license terms and references, see README.txt
-function model_1=train_variational_pitman_yor(data_1,T_1,max_kk,s_1,s_2,m_o,beta_o,a_o,b_o,rmx,thd1,init_method,sort_counts)
+function post=train_variational_pitman_yor(data_1,prior,op)
 
+% train_variational_pitman_yor estimates a variational posterior distribution for DPVMFMM/PYVMFMM parameters
+%
 % data   observations (num observations x dimension)
-% T      max num clusters
+%
+% prior.mu   mean direction (1 x dimension)
+% prior.beta   scale on concentration parameter
+% prior.a   gamma distribution shape parameter
+% prior.b   gamma distribution inverse scale parameter
+% prior.s_1   concentration parameter
+% prior.s_2   
+%
+% op.K   truncation level/num components in variational posterior distribution
+% op.max_num_iter   max num iterations (proposed: 500)
+% op.freetresh   iterations can be stopped when difference in ELBO < num observations x op.freetresh (proposed: 0.001)
+% op.reorder   binary to indicate whether components are reordered (proposed: 0)
+% op.init_Type   'random' allocate observations to components at random, 'kmeans' k-means initialisation, 'self' use op.init_z 
+% op.init_z (optional)   initial allocations (1 x num components)
+%
+% output:
+%
+% post.mu   mean direction (dimension x num components)
+% post.beta   scale on concentration parameter (1 x num components)
+% post.a   gamma distribution shape parameter (1 x num components)
+% post.b   gamma distribution inverse scale parameter (1 x num components)
+% post.z   allocation probabilities (num observations x num components)
+% post.fE   approximate free energy
 
 [N,D]=size(data_1);
 
@@ -13,20 +34,37 @@ function model_1=train_variational_pitman_yor(data_1,T_1,max_kk,s_1,s_2,m_o,beta
 assert(min(sum(power(data_1,2),2))>1-exp(-20));
 assert(max(sum(power(data_1,2),2))<1+exp(-20));
 
+T_1=op.K; % truncation level
+
+% mean direction:
+
+m_o=repmat(prior.mu,T_1,1)'; % D x T
+beta_o=prior.beta;
+
+% concentration parameter:
+
+a_o=prior.a;
+b_o=prior.b;
+
 % init model parameters
 
 model_1.kk = repmat(a_o./b_o,1,T_1);
 model_1.ln_kk = psi(a_o)-log(b_o);
 model_1.kk_approx=model_1.kk-(a_o>1)*(1./b_o);
 
+max_kk=round(size(data_1,2)/2); 
+while isfinite(besseli(size(data_1,2)/2,max_kk+10))
+    max_kk=max_kk+10;
+end
+
 % note how s_1 and s_2 are mapped here!
 
-g_2=s_1;
-g_1=s_2;
+g_2=prior.s_1;
+g_1=prior.s_2;
 
 % initialise responsibilities:
 
-switch lower(init_method)
+switch lower(op.init_Type)
 
     case 'random'
         q_z=rand(N,T_1);
@@ -34,13 +72,17 @@ switch lower(init_method)
         
     case 'kmeans'
         T_1=min(T_1,N);
-        labels=kmeans(data_1,T_1,'distance','cosine','maxIter',rmx);
+        labels=kmeans(data_1,T_1,'distance','cosine','maxIter',op.max_num_iter);
         q_z=dummyvar(labels);
         
         N_k=sum(q_z);
         [sorted_counts,sorted_index]=sort(N_k,'descend');
         q_z=q_z(:,sorted_index);
-        
+    case 'self'
+        q_z=dummyvar(op.init_z);
+        N_k=sum(q_z);
+        [sorted_counts,sorted_index]=sort(N_k,'descend');
+        q_z=q_z(:,sorted_index);
     otherwise
         error(['unknown init method: ' init])
 end
@@ -54,7 +96,7 @@ const_kk = a_o.*log(b_o)-gammaln(a_o);
 
 % do:
 
-for rr=1:rmx
+for rr=1:op.max_num_iter
     
     % UPDATE VARIATIONAL MODEL PARAMETERS
     
@@ -173,22 +215,18 @@ for rr=1:rmx
     
     assert(isreal(E_z_H_z));
        
-%     ELBO1(rr)=sum(E_x)/N;
-%     ELBO2(rr)=sum(E_z_H_z)/N;
-%     ELBO3(rr)=sum(E_m_H_m);
-%     ELBO4(rr)=sum(E_k_H_k);
-%     ELBO5(rr)=sum(E_p_H_p);
+    % approximate evidence lower bound:
     
     ELBO(rr)=sum(E_x)+sum(E_z_H_z)+sum(E_p_H_p)+sum(E_m_H_m)+sum(E_k_H_k);
     
-    if rr>1 && abs(ELBO(rr)-ELBO(rr-1))/N < thd1
+    if rr>1 && abs(ELBO(rr)-ELBO(rr-1))/N < op.freetresh
        disp(ELBO(rr)/N)
        break 
     end
     
     % sort clusters
     
-    if sort_counts
+    if op.reorder
     
         [sorted_counts,sorted_index]=sort(N_k,'descend');
         q_z=q_z(:,sorted_index);
@@ -202,23 +240,17 @@ for rr=1:rmx
     
 end % /iterations
 
-% figure(1);
-% plot(ELBO1);
-% figure(2);
-% plot(ELBO2);
-% figure(3);
-% plot(ELBO3);
-% figure(4);
-% plot(ELBO4);
-% figure(5);
-% plot(ELBO5);
-% figure(6);
-% plot(ELBO/N);
+%model_1.weight=N_k/N;
+%model_1.ELBO=ELBO;
+%model_1.q_z=q_z;
+%model_1.rr=rr;
 
-model_1.weight=N_k/N;
-model_1.ELBO=ELBO;
-model_1.q_z=q_z;
-model_1.rr=rr;
+post.mu=model_1.mu;
+post.beta=model_1.beta;
+post.a=model_1.a;
+post.b=model_1.b;
+post.z=q_z;
+post.fE=-1*ELBO(rr);
 
 end
 
