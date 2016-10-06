@@ -76,8 +76,8 @@ switch op.Pi_Type
     otherwise
     error(['unknown weight distribution prior: ' op.init_Type])
 end
-foundClustersV=zeros(N,op.repeats);
+foundClustersV=cell(1,op.repeats);
 for rr=1:op.repeats
-[~,foundClustersV(:,rr)]=max(resultVMM{rr}.z,[],2); %are the found cluters
+[~,foundClustersV{rr}]=max(resultVMM{rr}.z,[],2); %are the found cluters
 end
 
