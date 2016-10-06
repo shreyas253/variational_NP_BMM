@@ -5,8 +5,8 @@
 close all; clear;
 
 %% load your data
-% data = (); % as N*D where N=no of data, and D=dimensions
-
+data = rand(1000,10);
+[N,D] = size(data);
 
 %% GMM 
 % currently DDGMM, DPGMM and PYPGMM
@@ -18,13 +18,13 @@ prior.Pres0 = (1/0.05)*eye(D);%inv(cov(data)); %prior cov of the gaussian used t
 op.PresMain = (1/1e-3)*eye(D);%inv(cov(data)); % known covariance of the GMMs
 op.init_Type = 'random'; % initilization
 op.repeats = 5;% how many repaeats
-op.K=100;% truncation limit
+op.K=3;% truncation limit
 op.stopCrit = 'freeEnergy'; %'number' of runs or 'freeEnergy'
 op.freethresh = 1e-6;
 op.max_num_iter = 400;
 op.reorder = 1; % roderder (usualy used for NP methods)
 resultGMM = VB_gmms(data,prior,op);
-[~,foundClustersG]=max(resultGMM.z,[],2); %are the found cluters
+foundClustersG = resultGMM.z; %are the found cluters
 
 %% VMM
 % currently DPVMFMM and PYPVMFMM 
@@ -39,7 +39,7 @@ a_1=1; % concentration parameter
 %     ceil_kk=ceil_kk+10;
 % end
 ceil_kk=705; % this when 130-dimensional data
-
+data1 = data./repmat(sqrt(sum(abs(data).^2,2)),1,size(data,2));
 % mean parameter prior:
 mean_o=sum(data1)/norm(sum(data1)); % assume data points close to mean
 beta_o=0.05; % do not trust mean parameter too much
@@ -48,14 +48,16 @@ beta_o=0.05; % do not trust mean parameter too much
 a_o=1; % assume unconcentrated data
 b_o=0.01; % but do not trust that too much
 
-T=100; %truncation limit
+T=3; %truncation limit
 m_o=repmat(mean_o,T,1)';
 
 num_iterations=500;
 num_runs=5;%no of repeats
+foundClustersV = cell(num_runs);
 for rr=1:num_runs
     s_1=1; % alpha of earlier
     s_2=0; % zero when want to use DP(g of earlier)
-    resultVMM{rr}=train_variational_pitman_yor(data,T,ceil_kk,s_1,s_2,m_o,beta_o,a_o,b_o,num_iterations,likelihood_thd,init,1);
+    resultVMM{rr}=train_variational_pitman_yor(data1,T,ceil_kk,s_1,s_2,m_o,beta_o,a_o,b_o,num_iterations,likelihood_thd,init,1);
+    [~,foundClustersV{rr}]=max(resultVMM{rr}.q_z,[],2); %are the found cluters
  end
-[~,foundClustersV]=max(resultVMM.z,[],2); %are the found cluters
+
