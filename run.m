@@ -53,7 +53,7 @@ m_o=repmat(mean_o,T,1)';
 
 num_iterations=500;
 num_runs=5;%no of repeats
-foundClustersV = cell(num_runs);
+foundClustersV = cell(num_runs,1);
 for rr=1:num_runs
     s_1=1; % alpha of earlier
     s_2=0; % zero when want to use DP(g of earlier)
