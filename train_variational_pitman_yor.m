@@ -8,8 +8,8 @@ function post=train_variational_pitman_yor(data_1,prior,op)
 % prior.beta   scale on concentration parameter
 % prior.a   gamma distribution shape parameter
 % prior.b   gamma distribution inverse scale parameter
-% prior.s_1   concentration parameter
-% prior.s_2   
+% prior.s_1   discount parameter (corresponds to concentration parameter in DP)
+% prior.s_2   strength parameter (when this is zero, PYP corresponds to DP)
 %
 % op.K   truncation level/num components in variational posterior distribution
 % op.max_num_iter   max num iterations (proposed: 500)
