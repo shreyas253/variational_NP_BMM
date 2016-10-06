@@ -5,9 +5,11 @@
 %close all; clear;
 
 %% load your data
+
 % data = (); % as N*D where N=no of data, and D=dimensions
 
 [N,D]=size(data);
+
 
 %% GMM 
 % currently DDGMM, DPGMM and PYPGMM
@@ -20,16 +22,17 @@ prior.Pres0 = (1/0.05)*eye(D);%inv(cov(data)); %prior cov of the gaussian used t
 op.PresMain = (1/1e-3)*eye(D);%inv(cov(data)); % known covariance of the GMMs
 op.init_Type = 'random'; % initilization
 op.repeats = 5;% how many repaeats
-op.K=100;% truncation limit
+op.K=3;% truncation limit
 op.stopCrit = 'freeEnergy'; %'number' of runs or 'freeEnergy'
 op.freethresh = 1e-6;
 op.max_num_iter = 400;
 op.reorder = 1; % roderder (usualy used for NP methods)
 resultGMM = VB_gmms(data,prior,op);
-[~,foundClustersG]=max(resultGMM.z,[],2); %are the found cluters
+foundClustersG = resultGMM.z; %are the found cluters
 
 %% VMM
 % currently DPVMFMM and PYPVMFMM 
+
 
 data=bsxfun(@rdivide,data,sqrt(sum(power(data,2),2))); % normalise to unit length
 
@@ -41,6 +44,7 @@ vmm_prior.mu=sum(data)/norm(sum(data)); % assume data points close to mean
 vmm_prior.beta=0.05; % do not trust mean parameter too much
 
 % concentration parameter prior:
+
 vmm_prior.a=1; % assume unconcentrated data
 vmm_prior.b=0.01; % but do not trust that too much
 
@@ -76,3 +80,4 @@ foundClustersV=zeros(N,op.repeats);
 for rr=1:op.repeats
 [~,foundClustersV(:,rr)]=max(resultVMM{rr}.z,[],2); %are the found cluters
 end
+
