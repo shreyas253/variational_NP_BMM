@@ -39,6 +39,10 @@ The source code must be referenced when used in a published work.
 
 FILES AND FUNCTIONS
 -------------------
+please add Open source funtion 
+catstruct - 'https://se.mathworks.com/matlabcentral/fileexchange/7842-catstruct' 
+that is necessary for the function
+
 detailed explanation coming soon!!
 
 REFERENCES
