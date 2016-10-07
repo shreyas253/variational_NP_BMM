@@ -41,7 +41,7 @@ FILES AND FUNCTIONS
 -------------------
 please add Open source funtion 
 catstruct - 'https://se.mathworks.com/matlabcentral/fileexchange/7842-catstruct' 
-that is necessary for the function
+that is necessary for the program
 
 detailed explanation coming soon!!
 
