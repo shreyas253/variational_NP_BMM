@@ -2,9 +2,9 @@
 
 INTRODUCTION
 ------------
-The following is a toolbox that performs variational inferences of Baysina mixture models. The implimentation currently includes Gaussian mixture models and Von Mises-Fisher mixture models. The priors on the weight distribution include non-paramteric disributions such as the Dirichlet proecess and the Pitman-Yor process, and parametric distributiosn such as the Dirichlet distribution.
+The following is a toolbox that performs variational inferences of Baysina mixture models. The implimentation currently includes Gaussian mixture models and Von Mises-Fisher mixture models. The priors on the weight distribution include non-paramteric disributions such as the Dirichlet proecess and the Pitman-Yor process, and parametric distributions such as the Dirichlet distribution.
 
-The also forms source code related to our work 
+The also forms the source code related to our work 
 
 1. Shreyas Seshadri, Ulpu Remes and Okko Rasanen: "Dirichlet process mixture models for clustering i-vector data", submitted.
 
@@ -45,4 +45,4 @@ detailed explanation coming soon!!
 
 REFERENCES
 ----------
-[1]  D. M. Blei and M. I. Jordan, ???Variational inference for Dirichlet process mixtures,??? Bayesian analysis, vol. 1, no. 1, pp. 121???144, 2006.
+[1]  D. M. Blei and M. I. Jordan, Variational inference for Dirichlet process mixtures, Bayesian analysis, vol. 1, no. 1, pp. 121???144, 2006.
