@@ -12,7 +12,7 @@ The also forms the source code related to our work
 
 Comments/questions are welcome! Please contact: shreyas.seshadri@aalto.fi
 
-Last updated: 8.9.2016
+Last updated: 19.10.2016
 
 
 LICENSE
