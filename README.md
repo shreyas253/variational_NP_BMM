@@ -1,4 +1,4 @@
-# variatoinal_NP_BMM
+# variational_NP_BMM
 
 INTRODUCTION
 ------------
