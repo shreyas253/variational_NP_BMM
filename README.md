@@ -41,8 +41,7 @@ The source code must be referenced when used in a published work.
 
 METHODS
 -------
-
-The nonparametric priors included in the toolbox are constructed based on a stick-breaking process, and variational inference in the DPMM and PYPMM constructions is based on the truncated stick-breaking representation introduced in [1]. The variational posterior distribution over GMM parameters is calculated as proposed in [2] and the variational posterior distribution over VMFMM parameters as proposed in [3]. The variational method and numerical approximations applied in the VMFMM posterior estimation are also presented in the enclosed [DPVMFMM_documentation](DPVMFMM.pdf)
+The nonparametric priors included in the toolbox are constructed based on a stick-breaking process, and variational inference in the DPMM and PYPMM constructions is based on the truncated stick-breaking representation introduced in [1]. The variational posterior distribution over GMM parameters is calculated as proposed in [2] and the variational posterior distribution over VMFMM parameters as proposed in [3]. The variational method and numerical approximations applied in the VMFMM posterior estimation are also presented in the [enclosed documentation](approximate-variational-inference.pdf).
 
 FILES AND FUNCTIONS
 -------------------
@@ -54,4 +53,4 @@ REFERENCES
 
 [2] C. M. Bishop, Pattern recognition and machine learning. Springer, 2006.
 
-[3] J. Taghia, Z. Ma, and A. Leijon. Bayesian estimation of the von-Mises Fisher mixture model with variational inference, IEEE Trans. Pattern Analysis and Machine Intelligence, vol. 36, no. 9, pp. 1701-1715, 2014.
+[3] J. Taghia, Z. Ma, and A. Leijon. Bayesian estimation of the von-Mises Fisher mixture model with variational inference, IEEE TPAMI, vol. 36, no. 9, pp. 1701-1715, 2014.
