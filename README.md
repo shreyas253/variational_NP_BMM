@@ -41,7 +41,7 @@ The source code must be referenced when used in a published work.
 
 METHODS
 -------
-The nonparametric priors included in the toolbox are constructed based on a stick-breaking process, and variational inference in the DPMM and PYPMM constructions is based on the truncated stick-breaking representation introduced in [1]. The variational posterior distribution over GMM parameters is calculated as proposed in [2] and the variational posterior distribution over VMFMM parameters as proposed in [3]. The variational method and numerical approximations applied in the VMFMM posterior estimation are also presented in the [enclosed documentation](approximate-variational-inference.pdf).
+The nonparametric priors included in the toolbox are constructed based on a stick-breaking process, and variational inference in the DPMM and PYPMM constructions is based on the truncated stick-breaking representation introduced in [1]. The variational posterior distribution over GMM parameters is calculated as proposed in [2] and the variational posterior distribution over VMFMM parameters as proposed in [3]. The variational method and numerical approximations applied in the VMFMM posterior estimation are also presented in the enclosed documentation [approximate variational inference in DPVMFMM](approximate-variational-inference.pdf).
 
 FILES AND FUNCTIONS
 -------------------
