@@ -4,7 +4,7 @@ INTRODUCTION
 ------------
 The following is a toolbox that performs variational inferences of Baysina mixture models. The implimentation currently includes Gaussian mixture models and Von Mises-Fisher mixture models. The priors on the weight distribution include non-paramteric disributions such as the Dirichlet proecess and the Pitman-Yor process, and parametric distributions such as the Dirichlet distribution.
 
-The also forms the source code related to our work 
+This also forms the source code related to our work 
 
 1. Shreyas Seshadri, Ulpu Remes and Okko Rasanen: "Dirichlet process mixture models for clustering i-vector data", submitted.
 
@@ -12,13 +12,13 @@ The also forms the source code related to our work
 
 Comments/questions are welcome! Please contact: shreyas.seshadri@aalto.fi
 
-Last updated: 19.10.2016
+Last updated: 22.10.2016
 
 
 LICENSE
 -------
 
-Copyright (C) 2014 Shreyas Seshadri, Ulpu Remes and Okko Rasanen, Aalto University
+Copyright (C) 2016 Shreyas Seshadri, Ulpu Remes and Okko Rasanen, Aalto University
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -45,7 +45,48 @@ The nonparametric priors included in the toolbox are constructed based on a stic
 
 FILES AND FUNCTIONS
 -------------------
-detailed explanation coming soon!!
+run.m: 
+Script to run the toy data for various options of models and weight priors
+
+VB_mixModel.m:
+Main function that performs the variational inference of the Bayesian mixture models 
+
+updateR.m:
+Function to do the E-step in the variational inference algorithm
+
+postUpdate.m:
+Function to do the M-step in the variational inference algorithm
+
+freeEnergyCalc.m:
+Function to calculate the free energy of the variational distribution
+
+approximate_bound.m:
+Function to calculate the lower bound on the expected state likelihoods
+
+d_besseli.m:
+Function to calculate the approximate value of the Bessel function
+
+wishartEntropy.m:
+Function that calculates the entropy of the Wishart distribution
+
+reorderFE.m:
+Function to reorder the clusters in descending order of the cluster occupancy. Used for the non-parametric weight priors.
+
+logdet.m:
+Function to calculate the calculate the log determinant of x
+
+logNormalize.m:
+Function to normalize the values given in log scale
+
+structMerge.m:
+Function to merge the objects in 2 or 3 structures
+
+plotClustering.m:
+Function to plot the data and clustering of the 2D data
+
+2d_data.mat and 10d_data.mat:
+2 and 10 dimensional toy data
+
 
 REFERENCES
 ----------
