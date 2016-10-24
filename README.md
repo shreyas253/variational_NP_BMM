@@ -2,7 +2,7 @@
 
 INTRODUCTION
 ------------
-The following is a toolbox that performs variational inferences of Baysina mixture models. The implimentation currently includes Gaussian mixture models and Von Mises-Fisher mixture models. The priors on the weight distribution include non-paramteric disributions such as the Dirichlet proecess and the Pitman-Yor process, and parametric distributions such as the Dirichlet distribution.
+The following is a toolbox that performs variational inferences of Bayesian mixture models. The implementation currently includes Gaussian mixture models and Von Mises-Fisher mixture models. The priors on the weight distribution include non-parametric distributions such as the Dirichlet process and the Pitman-Yor process, and parametric distributions such as the Dirichlet distribution.
 
 This also forms the source code related to our work 
 
@@ -95,3 +95,4 @@ REFERENCES
 [2] C. M. Bishop, Pattern recognition and machine learning. Springer, 2006.
 
 [3] J. Taghia, Z. Ma, and A. Leijon. Bayesian estimation of the von-Mises Fisher mixture model with variational inference, IEEE TPAMI, vol. 36, no. 9, pp. 1701-1715, 2014.
+
