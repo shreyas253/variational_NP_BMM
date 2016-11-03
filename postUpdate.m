@@ -70,7 +70,7 @@ elseif strcmp(op.model_Type,'VMM')
     nu=D/2-1;
     bes_kk = d_besseli(nu,extra_V.kk_approx);
     bes_bo = d_besseli(nu,prior.beta.*extra_V.kk_approx);
-    bes_bk = d_besseli(nu,post.beta.*extra_V.kk_approx);
+    bes_bk = d_besseli_lower(nu,post.beta.*extra_V.kk_approx);
 
 %     post.a = prior.a + Nk*nu; % positive 1 x T
 %     post.b = prior.b + Nk.*bes_kk + prior.beta.*bes_bo - post.beta.*bes_bk; % positive 1 x T
