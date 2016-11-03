@@ -81,4 +81,4 @@ if D==2
     plotClustering(dataOrig,foundClusters{1},'Found Clusters');
 end
 
-ari(z,foundClusters)
+[acp,asp,acc]=acp_asp_acc(foundClusters{1},z)
