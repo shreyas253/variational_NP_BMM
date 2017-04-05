@@ -98,6 +98,8 @@ for itr = 1:op.repeats
     [~,res.z{itr}] = max(r,[],2);
     res.Nk{itr} = extra.Nk;
     res.seed = seed;
+    res.model.post = post;
+    res.model.extra = extra_V;    
 end
 
 end
