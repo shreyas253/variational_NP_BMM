@@ -82,3 +82,6 @@ if D==2
 end
 
 [acp,asp,acc]=acp_asp_acc(foundClusters{1},z)
+
+% posterior probablities 
+postProbs = updateR(data,result.model.post,op,result.model.extra);
