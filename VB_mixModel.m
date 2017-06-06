@@ -1,21 +1,21 @@
 function [ res ] = VB_mixModel( x,prior,op,seed )
 % function [ res ] = VB_mixModel( x,prior,op,seed )
 % 
-% Performs clustering using Bayesian Mixture models using Variationla inference with the specified
+% Performs clustering using Bayesian Mixture models using Variational inference with the specified
 % models and priors. The models possible are Von Mises-Fisher mixture
-% mdoels (VMM) and Gaussian mixture models (GMM; with Full, Diagonal and Fixed
+% models (VMM) and Gaussian mixture models (GMM; with Full, Diagonal and Fixed
 % covariance). The priors on the GMMs are the corresponding conjugate
-% priors and the of the VMM are ... The priors on the weight distibution
-% can be the parametric Dirichlet Distribution (DD) or non parametric
-% options such as the Dirichlet proecess (DP) or the Pitman-Yor process (PYP)
+% priors and those on the VMM are a VMF distribution and a Gamma distribution (see reference doc). 
+% The priors on the weight distribution can be the parametric Dirichlet Distribution (DD) or non parametric
+% options such as the Dirichlet process (DP) or the Pitman-Yor process (PYP)
 %
 % Inputs:   
 %   x:          data, N x D
-%   op:         object vairous options
+%   op:         object various options
 %       op.Pi_Type:      'DP', 'DD' or 'PYP'(include prior.g)
 %       op.model_Type:    'GMM-Full', 'GMM-Diag', 'GMM-Fixed' or 'VMM'
-%       op.init_Type:    'random' or 'self'(include op.Init_r = initial reponsibilities)
-%       op.repeats:      no of reapeats of the whole EM procedure (e.g. 10 or 20)
+%       op.init_Type:    'random' or 'self'(include op.Init_r = initial responsibilities)
+%       op.repeats:      no of repeats of the whole EM procedure (e.g. 10 or 20)
 %       op.stopCrit:     'freeEnergy' or 'number'(include op.noStop = number of EM iterations)
 %       op.max_num_iter: maximum no of EM iterations 
 %       op.K:            max number of clusters
@@ -23,8 +23,8 @@ function [ res ] = VB_mixModel( x,prior,op,seed )
 %       op.reorder:      binary to control whether to reorder the clusters (in descending order of data associated; used in non-parametric methods) after each EM iteration 
 %   prior:      object with different prior values depending on model type.
 %               The prior parameters used for different op.model_Type are
-%       'GMM-Full':     m0, beta0, W0 and v0 (normal whisart - see Bishop)
-%       'GMM-Diag':     m0, beta0, a0 and b0 (normal Gamma - see (http://www.albany.edu/~yy298919/realvb.pdf))
+%       'GMM-Full':     m0, beta0, W0 and v0 (Normal Whisart - see Bishop)
+%       'GMM-Diag':     m0, beta0, a0 and b0 (Normal Gamma - see (http://www.albany.edu/~yy298919/realvb.pdf))
 %       'GMM-Fixed':    m0, Pres0(params of gaussain modelling mean) and PresMain(fixed/known precision)
 %       'VMM':          mu, beta, a and b (see reference doc)
 %               The priors for the weight distribution are
