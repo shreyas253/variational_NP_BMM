@@ -4,7 +4,7 @@ function structMerged = structMerge(struct1,struct2,struct3)
 % merges 2 or 3 structures such that the new one contains all fields from both
 %
 % INPUTS:
-%        struct1,struct1 = structres
+%        struct1,struct1 = structs
 % OUTPUTS:
 %        structMerged = merged struct
 %
