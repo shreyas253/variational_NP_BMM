@@ -1,4 +1,4 @@
-% Example code to run the Vaiational Bayesian Clustering toolbox
+% Example code to run the Variational Bayesian Clustering toolbox
 %
 % By: Shreyas Seshadri (shreyas.sesahdri@aalto.fi), Ulpu Remes and Okko Rasaen, Last update:19.10.2016
 % (C) MIT license
