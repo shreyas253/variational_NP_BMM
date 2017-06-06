@@ -10,7 +10,7 @@ This also forms the source code related to our work
 
 2. Shreyas Seshadri, Ulpu Remes and Okko Rasanen: "Comparison of Non-parametric Bayesian Mixture Models for Syllable Clustering and Zero-Resource Speech Processing", accepted for publication in Proc. Interspeech 2017, Stockholm, Sweden.
 
-Comments/questions are welcome! Please contact: 'firstname'.'secondname'@aalto.fi
+Comments/questions are welcome! Please contact: shreyas.seshadri@aalto.fi
 
 Last updated: 22.10.2016
 
