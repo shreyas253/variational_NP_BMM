@@ -1,6 +1,5 @@
 function plotClustering( data,z,titleStr )
-%PLOTCLUSTERING Summary of this function goes here
-%   Detailed explanation goes here
+
 figure;
 colors = {'k','b','r','g','y','cy','m'};
 zVals = unique(z)';
