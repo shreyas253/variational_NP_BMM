@@ -2,8 +2,7 @@
 % MIT license
 % For license terms and references, see README.txt
 function [ r,extra ] = updateR( x,post,op,extra_V )
-%UPDATER Summary of this function goes here
-%   Detailed explanation goes here
+
 
 [N,D] = size(x);
 K = op.K;
