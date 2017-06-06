@@ -6,7 +6,7 @@ function [acp asp acc]=acp_asp_acc(estim_classes,true_classes)
 % see: Ajmera, Bourland, Lapidot, McCowan: Unknown-multiple speaker clustering 
 % using HMM, ICSLP, 2002.
 % 
-% implementation by Ulpu Remes
+% By: Ulpu Remes
 
 counts=crosstab(true_classes,estim_classes);
 [num_true, num_estim]=size(counts);
