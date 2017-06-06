@@ -3,9 +3,9 @@
 % For license terms and references, see README.txt
 function [ entropyWish ] = wishartEntropy( W,v )
 %WISHARTENTROPY 
-% inputs - K wishart distribution paramters W(:,:,k) and v(k), for k=1:K
-% output - K array with etropy of each wishart distibution
-% ignores constabt term
+% inputs - K Wishart distribution parameters W(:,:,k) and v(k), for k=1:K
+% output - K array with entropy of each Wishart distribution
+% ignores constant term
 [~,D,K] = size(W);
 
 for k = 1:K
