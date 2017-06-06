@@ -2,8 +2,7 @@
 % MIT license
 % For license terms and references, see README.txt
 function [ post,extra,extra_V ] = postUpdate(x,r,prior,op,extra_V)
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+
 
 K = size(r, 2);
 [N,D] = size(x);
