@@ -6,9 +6,9 @@ The following is a toolbox that performs variational inferences of Bayesian mixt
 
 This also forms the source code related to our work 
 
-1.	Shreyas Seshadri, Ulpu Remes and Okko Rasanen: "Dirichlet process mixture models for clustering i-vector data", in Proc. ICASSP 2017, New Orleans, USA, pp. 5470-5474.
+1.	Shreyas Seshadri, Ulpu Remes and Okko Räsänen: "Dirichlet process mixture models for clustering i-vector data", in Proc. ICASSP 2017, New Orleans, USA, pp. 5470-5474.
 
-2. Shreyas Seshadri, Ulpu Remes and Okko Rasanen: "Comparison of Non-parametric Bayesian Mixture Models for Syllable Clustering and Zero-Resource Speech Processing", accepted for publication in Proc. Interspeech 2017, Stockholm, Sweden.
+2. Shreyas Seshadri, Ulpu Remes and Okko Räsänen: "Comparison of Non-parametric Bayesian Mixture Models for Syllable Clustering and Zero-Resource Speech Processing", accepted for publication in Proc. Interspeech 2017, Stockholm, Sweden.
 
 Comments/questions are welcome! Please contact: shreyas.seshadri@aalto.fi
 
